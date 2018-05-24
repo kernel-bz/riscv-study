@@ -1,5 +1,6 @@
 /**
-    file: arch/riscv/include/asm/processor.h
+    linux kernel source: arch/riscv/include/asm/processor.h
+    editted by: Jung-JaeJoon <rgbi3307@nate.com> on the www.kernel.bz
 */
 
 ///#define __riscv_muldiv

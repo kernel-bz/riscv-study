@@ -1,5 +1,6 @@
 /**
-    file: arch/riscv/include/asm/atomic.h
+    linux kernel source: arch/riscv/include/asm/atomic.h
+    editted by: Jung-JaeJoon <rgbi3307@nate.com> on the www.kernel.bz
 */
 
 ///include/linux/compiler-gcc.h
@@ -60,10 +61,12 @@ ATOMIC_OPS(xor, xor,  i)
 
 int main(void)
 {
-    int i = 0;
-    atomic_t *v;
-    long j = 0;
-    atomic64_t *w;
+    int i = 10;
+    atomic_t *v;    ///int counter
+    v->counter = 20;
+    long j = 100;
+    atomic64_t *w;  ///long counter
+    w->counter = 200;
 
     atomic_inc(v);
     atomic_add(i, v);
