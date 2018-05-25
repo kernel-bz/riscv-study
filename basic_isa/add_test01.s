@@ -10,11 +10,11 @@ main:
 	addi	s0,sp,48        //s0 = sp + 48
 
 	li	    a5,10           //a5 = 10
-	sw	    a5,-20(s0)      //[s0-20] = a5      //i = 10
+	sw	    a5,-20(s0)      //[s0-20] = a5      //i = 10    //RV32I (Store Word 4Bytes)
 	sw	    zero,-24(s0)    //[s0-24] = zero    //v = 0
 
 	li	    a5,100          //a5 = 100
-	sd	    a5,-32(s0)      //[s0-32] = a5      //j = 100
+	sd	    a5,-32(s0)      //[s0-32] = a5      //j = 100   ///RV64I (Strore DoubleWord 8Bytes)
 	sd	    zero,-40(s0)    //[s0-40] = zero    //w = 0
 
 	lw	    a5,-20(s0)      //a5 = [s0-20]      //i

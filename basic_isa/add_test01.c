@@ -7,9 +7,9 @@
 int main(void)
 {
     int i = 10;
-    int v = 0;
+    int v = 0;      ///32bit(4Bytes):  Word
     long j = 100;
-    long w = 0;
+    long w = 0;     ///64bits(8Bytes): DoubleWord
 
     i++;
     v += i;
