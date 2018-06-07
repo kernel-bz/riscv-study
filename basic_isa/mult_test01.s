@@ -13,7 +13,7 @@ main:
 	li	    a5,10
 	sw	    a5,-24(s0)              //int v = 10
 	sw	    zero,-28(s0)            //float j = 0
-	lui	    a5,%hi(.LC0)            //a5 = Upper(.LC0)
+	lui	    a5,%hi(.LC0)            //a5 = Upper(.LC0) = 0x10
 	flw	    fa5,%lo(.LC0)(a5)       //fa5 = [a5 + Lower(.LC0)]
 	fsw	    fa5,-32(s0)             //float w = 100.0
 	sd	    zero,-40(s0)            //double k = 0
@@ -61,16 +61,20 @@ main:
 	.size	main, .-main
 	.section	.rodata
 	.align	2
-.LC0:                               //100.0
+//0x10510
+.LC0:                               //.rodata    //100.0
 	.word	1120403456
 	.align	3
+//0x10518
 .LC1:                               //1000.0
 	.word	0
 	.word	1083129856
 	.align	2
+//0x10520
 .LC2:                               //1.0
 	.word	1065353216
 	.align	3
+//0x10528
 .LC3:                               //1.0
 	.word	0
 	.word	1072693248

@@ -1,0 +1,81 @@
+
+mult_test01.o:     file format elf64-littleriscv
+
+SYMBOL TABLE:
+0000000000000000 l    df *ABS*	0000000000000000 mult_test01.c
+0000000000000000 l    d  .text	0000000000000000 .text
+0000000000000000 l    d  .data	0000000000000000 .data
+0000000000000000 l    d  .bss	0000000000000000 .bss
+0000000000000000 l    d  .rodata	0000000000000000 .rodata
+0000000000000000 l       .rodata	0000000000000000 .LC0
+0000000000000008 l       .rodata	0000000000000000 .LC1
+0000000000000010 l       .rodata	0000000000000000 .LC2
+0000000000000018 l       .rodata	0000000000000000 .LC3
+0000000000000000 l    d  .comment	0000000000000000 .comment
+0000000000000000 g     F .text	000000000000009c main
+
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	7179                	addi	sp,sp,-48
+   2:	f422                	sd	s0,40(sp)
+   4:	1800                	addi	s0,sp,48
+   6:	fe042623          	sw	zero,-20(s0)
+   a:	47a9                	li	a5,10
+   c:	fef42423          	sw	a5,-24(s0)
+  10:	fe042223          	sw	zero,-28(s0)
+  14:	000007b7          	lui	a5,0x0
+			14: R_RISCV_HI20	.LC0
+			14: R_RISCV_RELAX	*ABS*
+  18:	0007a787          	flw	fa5,0(a5) # 0 <main>
+			18: R_RISCV_LO12_I	.LC0
+			18: R_RISCV_RELAX	*ABS*
+  1c:	fef42027          	fsw	fa5,-32(s0)
+  20:	fc043c23          	sd	zero,-40(s0)
+  24:	000007b7          	lui	a5,0x0
+			24: R_RISCV_HI20	.LC1
+			24: R_RISCV_RELAX	*ABS*
+  28:	0007b787          	fld	fa5,0(a5) # 0 <main>
+			28: R_RISCV_LO12_I	.LC1
+			28: R_RISCV_RELAX	*ABS*
+  2c:	fcf43827          	fsd	fa5,-48(s0)
+  30:	fec42783          	lw	a5,-20(s0)
+  34:	2785                	addiw	a5,a5,1
+  36:	fef42623          	sw	a5,-20(s0)
+  3a:	fe842703          	lw	a4,-24(s0)
+  3e:	fec42783          	lw	a5,-20(s0)
+  42:	02f707bb          	mulw	a5,a4,a5
+  46:	fef42423          	sw	a5,-24(s0)
+  4a:	fe442707          	flw	fa4,-28(s0)
+  4e:	000007b7          	lui	a5,0x0
+			4e: R_RISCV_HI20	.LC2
+			4e: R_RISCV_RELAX	*ABS*
+  52:	0007a787          	flw	fa5,0(a5) # 0 <main>
+			52: R_RISCV_LO12_I	.LC2
+			52: R_RISCV_RELAX	*ABS*
+  56:	00f777d3          	fadd.s	fa5,fa4,fa5
+  5a:	fef42227          	fsw	fa5,-28(s0)
+  5e:	fe042707          	flw	fa4,-32(s0)
+  62:	fe442787          	flw	fa5,-28(s0)
+  66:	10f777d3          	fmul.s	fa5,fa4,fa5
+  6a:	fef42027          	fsw	fa5,-32(s0)
+  6e:	fd843707          	fld	fa4,-40(s0)
+  72:	000007b7          	lui	a5,0x0
+			72: R_RISCV_HI20	.LC3
+			72: R_RISCV_RELAX	*ABS*
+  76:	0007b787          	fld	fa5,0(a5) # 0 <main>
+			76: R_RISCV_LO12_I	.LC3
+			76: R_RISCV_RELAX	*ABS*
+  7a:	02f777d3          	fadd.d	fa5,fa4,fa5
+  7e:	fcf43c27          	fsd	fa5,-40(s0)
+  82:	fd043707          	fld	fa4,-48(s0)
+  86:	fd843787          	fld	fa5,-40(s0)
+  8a:	12f777d3          	fmul.d	fa5,fa4,fa5
+  8e:	fcf43827          	fsd	fa5,-48(s0)
+  92:	4781                	li	a5,0
+  94:	853e                	mv	a0,a5
+  96:	7422                	ld	s0,40(sp)
+  98:	6145                	addi	sp,sp,48
+  9a:	8082                	ret
