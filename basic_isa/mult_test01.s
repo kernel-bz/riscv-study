@@ -13,13 +13,13 @@ main:
 	li	    a5,10
 	sw	    a5,-24(s0)              //int v = 10
 	sw	    zero,-28(s0)            //float j = 0
-	lui	    a5,%hi(.LC0)
-	flw	    fa5,%lo(.LC0)(a5)
-	fsw	    fa5,-32(s0)             //float w = 100
+	lui	    a5,%hi(.LC0)            //a5 = Upper(.LC0)
+	flw	    fa5,%lo(.LC0)(a5)       //fa5 = [a5 + Lower(.LC0)]
+	fsw	    fa5,-32(s0)             //float w = 100.0
 	sd	    zero,-40(s0)            //double k = 0
 	lui	    a5,%hi(.LC1)
 	fld	    fa5,%lo(.LC1)(a5)
-	fsd	    fa5,-48(s0)             //double x = 1000
+	fsd	    fa5,-48(s0)             //double x = 1000.0
 
 	lw	    a5,-20(s0)              //i
 	addiw	a5,a5,1                 //i + 1
@@ -61,17 +61,17 @@ main:
 	.size	main, .-main
 	.section	.rodata
 	.align	2
-.LC0:
+.LC0:                               //100.0
 	.word	1120403456
 	.align	3
-.LC1:
+.LC1:                               //1000.0
 	.word	0
 	.word	1083129856
 	.align	2
-.LC2:
+.LC2:                               //1.0
 	.word	1065353216
 	.align	3
-.LC3:
+.LC3:                               //1.0
 	.word	0
 	.word	1072693248
 	.ident	"GCC: (GNU) 7.2.0"
