@@ -6,7 +6,7 @@
 	.type	main, @function
 main:
 	addi	sp,sp,-96
-	sd	s0,88(sp)
+	sd	    s0,88(sp)
 	addi	s0,sp,96
 	li	a5,10
 	sw	a5,-20(s0)      //i = 10
