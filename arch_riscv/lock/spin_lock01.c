@@ -1,5 +1,5 @@
 /**
-    linux kernel source: arch/riscv/include/asm/spin_lock.h
+    linux kernel source: arch/riscv/include/asm/spinlock.h
     editted by: Jung-JaeJoon <rgbi3307@nate.com> on the www.kernel.bz
     function: spin_lock test
 */
@@ -45,9 +45,9 @@ static inline int arch_spin_trylock(arch_spinlock_t *lock)
 int main(void)
 {
     int busy;
-    arch_spinlock_t *lock;
+    arch_spinlock_t lock;
 
-    busy = arch_spin_trylock(lock);
+    busy = arch_spin_trylock(&lock);
 
     return 0;
 }

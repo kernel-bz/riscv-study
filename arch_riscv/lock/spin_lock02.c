@@ -275,15 +275,13 @@ static inline void arch_spin_lock(arch_spinlock_t *lock)
 int main(void)
 {
     int busy;
-    arch_spinlock_t *lock;
+    arch_spinlock_t lock = (arch_spinlock_t)__ARCH_SPIN_LOCK_UNLOCKED;
 
-    lock->lock = 0;
-
-    arch_spin_lock(lock);
+    arch_spin_lock(&lock);
 
     ///Critical Section
 
-    arch_spin_unlock(lock);
+    arch_spin_unlock(&lock);
 
     return 0;
 }
