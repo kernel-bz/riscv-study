@@ -59,13 +59,14 @@ static inline __attribute__((always_inline)) void __write_once_size(volatile voi
 # 230 "spin_lock02.c"
 static inline void arch_spin_unlock(arch_spinlock_t *lock)
 {
+
  do { do { } while (0); __asm__ __volatile__ ("fence " "rw" "," "w" : : : "memory"); ({ union { typeof(*&lock->lock) __val; char __c[1]; } __u = { .__val = (__attribute__((force)) typeof(*&lock->lock)) (0) }; __write_once_size(&(*&lock->lock), __u.__c, sizeof(*&lock->lock)); __u.__val; }); } while (0);
 }
 
 static inline int arch_spin_trylock(arch_spinlock_t *lock)
 {
  int tmp = 1, busy;
-
+# 255 "spin_lock02.c"
  __asm__ __volatile__ (
   "	amoswap.w %0, %2, %1\n"
   "\tfence r , rw\n"
@@ -90,15 +91,13 @@ static inline void arch_spin_lock(arch_spinlock_t *lock)
 int main(void)
 {
     int busy;
-    arch_spinlock_t *lock;
+    arch_spinlock_t lock = (arch_spinlock_t){ 0 };
 
-    lock->lock = 0;
-
-    arch_spin_lock(lock);
+    arch_spin_lock(&lock);
 
 
 
-    arch_spin_unlock(lock);
+    arch_spin_unlock(&lock);
 
     return 0;
 }

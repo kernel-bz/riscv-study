@@ -229,7 +229,8 @@ do {									\
 
 static inline void arch_spin_unlock(arch_spinlock_t *lock)
 {
-	smp_store_release(&lock->lock, 0);  ///amoswap.w  x0, x0, (lock->lock)
+    ///amoswap.w  x0, x0, (lock->lock)
+	smp_store_release(&lock->lock, 0);
 }
 
 static inline int arch_spin_trylock(arch_spinlock_t *lock)

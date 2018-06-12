@@ -1,7 +1,7 @@
-# 1 "atomic_test01.c"
+# 1 "test.c"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "atomic_test01.c"
+# 1 "test.c"
 
 
 
@@ -10,7 +10,7 @@
 
 static void atomic_add(int a, int b)
 {
-# 18 "atomic_test01.c"
+# 18 "test.c"
     __asm__ __volatile__ (
         "amo" "add" "." "w" " zero, %1, %0"
         : "+A" (b)
@@ -20,7 +20,7 @@ static void atomic_add(int a, int b)
 
 static void atomic_swap(int a, int b)
 {
-# 39 "atomic_test01.c"
+# 39 "test.c"
  __asm__ __volatile__ (
   "	amoswap.w %0, %2, %1\n"
   : "=r" (a), "+A" (b)

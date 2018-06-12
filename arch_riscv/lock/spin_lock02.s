@@ -10,7 +10,7 @@ arch_spin_unlock:
 	addi	s0,sp,64
 	sd	a0,-56(s0)
  #APP
-# 232 "spin_lock02.c" 1
+# 233 "spin_lock02.c" 1
 	fence rw,w
 # 0 "" 2
  #NO_APP
@@ -93,7 +93,7 @@ arch_spin_trylock:
 	lw	a5,-20(s0)
 	ld	a4,-40(s0)
  #APP
-# 239 "spin_lock02.c" 1
+# 255 "spin_lock02.c" 1
 		amoswap.w a5, a5, 0(a3)
 	fence r , rw
 
@@ -208,11 +208,12 @@ main:
 	sd	ra,24(sp)
 	sd	s0,16(sp)
 	addi	s0,sp,32
-	ld	a5,-24(s0)
-	sw	zero,0(a5)
-	ld	a0,-24(s0)
+	sw	zero,-24(s0)
+	addi	a5,s0,-24
+	mv	a0,a5
 	call	arch_spin_lock
-	ld	a0,-24(s0)
+	addi	a5,s0,-24
+	mv	a0,a5
 	call	arch_spin_unlock
 	li	a5,0
 	mv	a0,a5

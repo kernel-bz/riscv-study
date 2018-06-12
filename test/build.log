@@ -1,4 +1,0 @@
-riscv64-unknown-elf-gcc -o xlen64 xlen.c -march=rv64imac -mabi=lp64
-/home/jungjaejoon/Projects/risc-v/riscv/lib/gcc/riscv64-unknown-elf/7.2.0/../../../../riscv64-unknown-elf/bin/ld: /tmp/cce9UMVI.o: can't link hard-float modules with soft-float modules
-/home/jungjaejoon/Projects/risc-v/riscv/lib/gcc/riscv64-unknown-elf/7.2.0/../../../../riscv64-unknown-elf/bin/ld: failed to merge target specific data of file /tmp/cce9UMVI.o
-collect2: error: ld returned 1 exit status
