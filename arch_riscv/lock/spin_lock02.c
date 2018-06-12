@@ -229,7 +229,7 @@ do {									\
 
 static inline void arch_spin_unlock(arch_spinlock_t *lock)
 {
-    ///amoswap.w  x0, x0, (lock->lock)
+    ///amoswap.w  x0, x0, lock->lock
 	smp_store_release(&lock->lock, 0);
 }
 
@@ -238,19 +238,14 @@ static inline int arch_spin_trylock(arch_spinlock_t *lock)
 	int tmp = 1, busy;
 
 	///amoswap.w  rd, rs1, rs2
-    ///lr.w rd, rs1             //rd = rs1
-    ///sc.w rd, rs1, rs2        //[rs2] = rs2 swap rd
-                                ///rd = 0 or 1
+    ///1: rd = [rs2]
+    ///2: [rs2] = rs1
+    ///3: rs1 = rd
 
-	///amoswap.w  busy, tmp, (lock->lock)
-
-	///amoswap.w  tmp, tmp, (lock->lock)
-	///busy = tmp
-
-	///amoswap.w  tmp, tmp, (lock->lock)
-    ///1: tmp = tmp
-    ///2: [lock->lock] = (lock->lock) swap tmp
-    ///3: busy = tmp
+    ///amoswap.w  busy, tmp, lock
+    ///busy = [lock]
+    ///[lock] = tmp
+    ///tmp = busy
 
 	__asm__ __volatile__ (
 		"	amoswap.w %0, %2, %1\n"

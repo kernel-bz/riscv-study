@@ -8,13 +8,11 @@ static void atomic_add(int a, int b)
 {
     ///amoadd.w  rd, rs1, rs2
     ///lr.w rd, rs1             //rd = rs1
-    ///sc.w rd, rs1, rs2        //[rs2] = rs2 add rd
-                                ///rd = 0 or 1
-
+    ///sc.w rd, rs1, rs2        //[rs2] = rs2 add rs1
+                                ///rd = 0(OK) or 1(FAIL)
 	///amoadd.w  zero, a, b
-	///lr.w rd, rs1             //x0 = a
-    ///sc.w rd, rs1, rs2        //[b] = b + a
-                                ///rd = 0 or 1
+    ///[b] = b + a
+
     __asm__ __volatile__ (
         "amo" "add" "." "w" " zero, %1, %0"
         : "+A" (b)
@@ -24,17 +22,11 @@ static void atomic_add(int a, int b)
 
 static void atomic_swap(int a, int b)
 {
+    ///amoswap.w  a, a, b
     ///amoswap.w  rd, rs1, rs2
-    ///lr.w rd, rs1             //rd = rs1
-    ///sc.w rd, rs1, rs2        //[rs2] = rs2 swap rd
-                                ///rd = 0 or 1
-
-    ///amoswap.w  a, a, b
-
-    ///amoswap.w  a, a, b
-    ///1: a = a
-    ///2: [b] = b swap a
-    ///3: a = b
+    ///1: rd = [rs2]
+    ///2: [rs2] = rs1
+    ///3: rs1 = rd
 
 	__asm__ __volatile__ (
 		"	amoswap.w %0, %2, %1\n"
@@ -45,6 +37,12 @@ static void atomic_swap(int a, int b)
 
 static void atomic_swap2(int *a, int *b)
 {
+    ///amoswap.w  *a, *a, *b
+    ///amoswap.w  rd, rs1, rs2
+    ///1: rd = [rs2]
+    ///2: [rs2] = rs1
+    ///3: rs1 = rd
+
 	__asm__ __volatile__ (
 		"	amoswap.w %0, %2, %1\n"
 		: "=r" (*a), "+A" (*b)

@@ -19,12 +19,9 @@ typedef struct {
 /**
 static inline void atomic_add(int i, atomic_t *v)
 {
-    ///amoadd.w  rd, rs1, rs2
+    ///amoadd.w  zero, i, v
+    ///[v] = v + i
 
-	///amoadd.w  zero, i, v
-	///lr.w rd, rs1             //x0 = i
-    ///sc.w rd, rs1, rs2        //[rs2] = rs2 + rd = v + i
-                                ///rd = 0 or 1
     __asm__ __volatile__ (
         "amo" "add" "." "w" " zero, %1, %0"
         : "+A" (v->counter)
