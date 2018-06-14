@@ -10,7 +10,7 @@ typedef struct {
 static inline int arch_spin_trylock(arch_spinlock_t *lock)
 {
  int tmp = 1, busy;
-# 35 "spin_lock01.c"
+# 30 "spin_lock01.c"
  __asm__ __volatile__ (
   "	amoswap.w %0, %2, %1\n"
   "\tfence r , rw\n"
@@ -23,10 +23,13 @@ static inline int arch_spin_trylock(arch_spinlock_t *lock)
 
 int main(void)
 {
-    int busy;
+    int busy, ok;
     arch_spinlock_t lock;
+    lock.lock = 0;
 
     busy = arch_spin_trylock(&lock);
 
-    return 0;
+    ok = (busy) ? 1 : 0;
+
+    return ok;
 }

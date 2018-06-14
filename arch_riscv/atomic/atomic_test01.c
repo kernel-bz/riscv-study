@@ -11,7 +11,7 @@ static void atomic_add(int a, int b)
     ///sc.w rd, rs1, rs2        //[rs2] = rs2 add rs1
                                 ///rd = 0(OK) or 1(FAIL)
 	///amoadd.w  zero, a, b
-    ///[b] = b + a
+    ///[b] = [b] + a
 
     __asm__ __volatile__ (
         "amo" "add" "." "w" " zero, %1, %0"

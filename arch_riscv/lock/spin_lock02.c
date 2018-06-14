@@ -260,10 +260,10 @@ static inline int arch_spin_trylock(arch_spinlock_t *lock)
 static inline void arch_spin_lock(arch_spinlock_t *lock)
 {
 	while (1) {
-		if (arch_spin_is_locked(lock))      ///if (lock->lock)
+		if (arch_spin_is_locked(lock))      ///if(lock->lock)
 			continue;
 
-		if (arch_spin_trylock(lock))        ///if (!busy)
+		if (arch_spin_trylock(lock))        ///if(!busy) //(!lock)
 			break;
 	}
 }

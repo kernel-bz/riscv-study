@@ -39,10 +39,13 @@ static inline int arch_spin_trylock(arch_spinlock_t *lock)
 
 int main(void)
 {
-    int busy;
+    int busy, ok;
     arch_spinlock_t lock;
+    lock.lock = 0;
 
     busy = arch_spin_trylock(&lock);
 
-    return 0;
+    ok = (busy) ? 1 : 0;
+
+    return ok;
 }

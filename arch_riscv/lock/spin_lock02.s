@@ -93,7 +93,7 @@ arch_spin_trylock:
 	lw	a5,-20(s0)
 	ld	a4,-40(s0)
  #APP
-# 255 "spin_lock02.c" 1
+# 250 "spin_lock02.c" 1
 		amoswap.w a5, a5, 0(a3)
 	fence r , rw
 
