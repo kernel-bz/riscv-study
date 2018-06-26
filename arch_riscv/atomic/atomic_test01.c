@@ -33,6 +33,8 @@ static void atomic_swap(int a, int b)
 		: "=r" (a), "+A" (b)
 		: "r" (a)
 		: "memory");
+
+	///a++;
 }
 
 static void atomic_swap2(int *a, int *b)

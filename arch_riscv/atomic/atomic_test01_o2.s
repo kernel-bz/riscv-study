@@ -21,7 +21,7 @@ main:
 	addi	a4,sp,8             //&b
  #APP
 # 31 "atomic_test01.c" 1
-    amoswap.w a4, a5, 0(a4)     //a4=[b], [b]=a5=10
+    amoswap.w a4, a5, 0(a4)     //a4=[b]=20, [b]=a5=10=a
 # 0 "" 2
  #NO_APP
 	addi	a4,sp,4             //&b

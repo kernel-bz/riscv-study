@@ -18,7 +18,10 @@ atomic_add:
 	addi	a4,s0,-24           //&b
  #APP
 # 18 "atomic_test01.c" 1
-	amoadd.w zero, a5, 0(a4)    //[b]=b+a
+	amoadd.w zero, a5, 0(a4)    //[b]=a+[b]=10+20
+	//lw    a2, 0(a4)
+	//addw  a3, a5, a2
+	//sw    a3, 0(a4)
 # 0 "" 2
  #NO_APP
 	nop
@@ -43,10 +46,10 @@ atomic_swap:
 	addi	a4,s0,-24           //&b
  #APP
 # 39 "atomic_test01.c" 1
-    amoswap.w a5, a5, 0(a4)     //a5=[b], [b]=a
+    amoswap.w a5, a5, 0(a4)     //a5=[b], [b]=a=10
 # 0 "" 2
  #NO_APP
-	sw	    a5,-20(s0)          //[a]=a5
+	sw	    a5,-20(s0)          //[a]=a5=[b]=20
 	nop
 	ld	    s0,24(sp)
 	addi	sp,sp,32
