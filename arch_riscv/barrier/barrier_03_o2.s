@@ -25,17 +25,17 @@ foo:
 	.type	main, @function
 main:
 	lui	    a4,%hi(B)
-	lw	    a5,%lo(B)(a4)
-	lui	    a3,%hi(A)
-	addiw	a5,a5,1
-	sw	    a5,%lo(A)(a3)
+	lw	    a5,%lo(B)(a4)           //a5 = B
+	lui	    a3,%hi(A)               //a3 = &A
+	addiw	a5,a5,1                 //a5 = B + 1
+	sw	    a5,%lo(A)(a3)           //A = a5
  #APP
 # 40 "barrier_03.c" 1
 	fence r,rw
 # 0 "" 2
  #NO_APP
 	li	    a5,5
-	sw	    a5,%lo(B)(a4)
+	sw	    a5,%lo(B)(a4)           //B = 5
 	li	    a0,0
 	ret
 	.size	main, .-main

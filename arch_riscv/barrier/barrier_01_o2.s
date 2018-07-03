@@ -21,10 +21,10 @@ foo:
 main:
 	lui	    a4,%hi(B)           //B
 	lw	    a5,%lo(B)(a4)       //a5 = B
-	lui	    a3,%hi(A)           //a3 = A
+	lui	    a3,%hi(A)           //a3 = &A
 	li	    a0,0
-	addiw	a5,a5,1             //B += 1
-	sw	    a5,%lo(A)(a3)       //A = B
+	addiw	a5,a5,1             //a5 = B + 1
+	sw	    a5,%lo(A)(a3)       //A = a5
 	li	    a5,5
 	sw	    a5,%lo(B)(a4)       //B = 5
 	ret
