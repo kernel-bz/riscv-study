@@ -2,6 +2,7 @@
     linux kernel source: arch/riscv/include/asm/cacheflush.h
     editted by: Jung-JaeJoon <rgbi3307@nate.com> on the www.kernel.bz
     function: cache test
+              objdump -d -t -r a.out
 */
 
 ///arch/riscv/include/asm/sbi.h
