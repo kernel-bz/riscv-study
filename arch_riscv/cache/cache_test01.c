@@ -23,7 +23,7 @@
 */
 
 ///arch/riscv/include/asm/sbi.h
-#include "sbi.h"
+#include "../include/sbi.h"
 
 #define CONFIG_SMP
 
