@@ -1,0 +1,1 @@
+cmd_/home/risc-v/kernel/kernel-modules/kobject/kobject-wq.mod := printf '%s\n'   kobject-wq.o | awk '!x[$$0]++ { print("/home/risc-v/kernel/kernel-modules/kobject/"$$0) }' > /home/risc-v/kernel/kernel-modules/kobject/kobject-wq.mod

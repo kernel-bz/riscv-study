@@ -1,0 +1,1 @@
+cmd_/home/risc-v/kernel/kernel-modules/kobject/kobject-wq.ko := riscv64-unknown-linux-gnu-ld -r  -melf64lriscv -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/risc-v/kernel/kernel-modules/kobject/kobject-wq.ko /home/risc-v/kernel/kernel-modules/kobject/kobject-wq.o /home/risc-v/kernel/kernel-modules/kobject/kobject-wq.mod.o;  true

@@ -1,0 +1,29 @@
+
+align-test-07.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	1101                	addi	sp,sp,-32
+   2:	ec06                	sd	ra,24(sp)
+   4:	e822                	sd	s0,16(sp)
+   6:	1000                	addi	s0,sp,32
+   8:	47a1                	li	a5,8
+   a:	fef42623          	sw	a5,-20(s0)
+   e:	47c1                	li	a5,16
+  10:	fef42423          	sw	a5,-24(s0)
+  14:	fe842703          	lw	a4,-24(s0)
+  18:	fec42783          	lw	a5,-20(s0)
+  1c:	863a                	mv	a2,a4
+  1e:	85be                	mv	a1,a5
+  20:	000007b7          	lui	a5,0x0
+  24:	00078513          	mv	a0,a5
+  28:	00000097          	auipc	ra,0x0
+  2c:	000080e7          	jalr	ra # 28 <main+0x28>
+  30:	4781                	li	a5,0
+  32:	853e                	mv	a0,a5
+  34:	60e2                	ld	ra,24(sp)
+  36:	6442                	ld	s0,16(sp)
+  38:	6105                	addi	sp,sp,32
+  3a:	8082                	ret

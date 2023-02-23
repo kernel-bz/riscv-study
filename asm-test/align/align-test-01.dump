@@ -1,0 +1,11 @@
+
+align-test-01.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <.text>:
+   0:	00100013          	li	zero,1
+   4:	00200013          	li	zero,2
+   8:	00300013          	li	zero,3
+   c:	00400013          	li	zero,4

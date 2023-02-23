@@ -1,0 +1,1 @@
+cmd_/home/risc-v/kernel/kernel-modules/hello/Module.symvers :=  sed 's/ko$$/o/'  /home/risc-v/kernel/kernel-modules/hello/modules.order | scripts/mod/modpost      -o /home/risc-v/kernel/kernel-modules/hello/Module.symvers -e -i Module.symvers -T - 

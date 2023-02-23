@@ -1,0 +1,1 @@
+cmd_/home/risc-v/kernel/kernel-modules/hello/hello.mod := printf '%s\n'   hello.o | awk '!x[$$0]++ { print("/home/risc-v/kernel/kernel-modules/hello/"$$0) }' > /home/risc-v/kernel/kernel-modules/hello/hello.mod

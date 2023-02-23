@@ -1,0 +1,1 @@
+cmd_/home/risc-v/kernel/kernel-modules/kobject/Module.symvers :=  scripts/mod/modpost       -o /home/risc-v/kernel/kernel-modules/kobject/Module.symvers -T /home/risc-v/kernel/kernel-modules/kobject/modules.order -i Module.symvers -e 

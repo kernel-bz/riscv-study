@@ -1,0 +1,1 @@
+cmd_/home/risc-v/kernel/kernel-modules/hello/hello.ko := riscv64-unknown-linux-gnu-ld -r  -melf64lriscv -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/risc-v/kernel/kernel-modules/hello/hello.ko /home/risc-v/kernel/kernel-modules/hello/hello.o /home/risc-v/kernel/kernel-modules/hello/hello.mod.o;  true
